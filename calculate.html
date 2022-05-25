@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Калькулятор</title>
+</head>
+
+<body>
+    <div class="display"> 
+        <p id="output">0</p>
+    </div>
+    
+    <div class="first-row"> 
+        <button class="calculator__key" onclick="forclear()" style="width: 138px;">C</button>
+        <button class="calculator__key"onclick="perc()">%</button>
+        <button class="calculator__key" onclick="fordisplay('/') ">/</button>
+    </div>
+
+    <div class="second-row"> 
+        <button class="calculator__key" onclick="fordisplay('7') ">7</button>
+        <button class="calculator__key" onclick="fordisplay('8') ">8</button>
+        <button class="calculator__key" onclick="fordisplay('9') ">9</button>
+        <button class="calculator__key" onclick="fordisplay('*') ">X</button>
+    </div>
+
+<div class="third-row"> 
+        <button class="calculator__key" onclick="fordisplay('4')">4</button>
+        <button class="calculator__key" onclick="fordisplay('5') ">5</button>
+        <button class="calculator__key" onclick="fordisplay('6') ">6</button>
+        <button class="calculator__key" onclick="fordisplay('-') ">-</button>
+    </div>
+
+    <div class="fourth-row"> 
+        <button class="calculator__key" onclick="fordisplay('1') ">1</button>
+        <button class="calculator__key" onclick="fordisplay('2') ">2</button>
+        <button class="calculator__key" onclick="fordisplay('3') ">3</button>
+        <button class="calculator__key" onclick="fordisplay('+') ">+</button>
+    </div>
+
+    <div class="fifth-row"> 
+        <button class="calculator__key" style="width: 138px;">0</button>
+        <button class="calculator__key" onclick="fordisplay('.') ">.</button>
+        <button class="calculator__key--enter"onclick="solve()">=</button>
+    </div>
+</body>
+
+<style>
+    .display {
+ background-color: rgb(255, 255, 255);
+ padding: 15px;
+ width: 250px;
+ text-align: right;
+ font-size: 40px;
+ border-top-left-radius:10px;
+ border-top-right-radius:10px;
+ border: solid;
+ border-width: 1px;
+ border-color: blueviolet;
+}
+button {
+ padding: 10px;
+ width: 67px;
+ height: 45px;
+ margin-top: 10px;
+ background-color: rgb(219, 181, 255);
+ color: black;
+ font-size: 20px;
+ border-radius: 20px;
+}
+button:hover {
+ cursor: pointer;
+ background-color: rgb(192, 244, 255);
+}
+button:active {
+ background-color: rgb(135, 194, 243);
+}
+.calculator__key {
+  border: none;
+  padding-block-start: 0.5rem; 
+  padding-block-end: 0.5rem; 
+  padding-inline-start: 1.25rem; 
+  padding-inline-end: 1.25rem; 
+  font-size: 1.5rem;
+}
+.calculator__key--enter {
+  border: none;
+  padding-block-start: 0.5rem; 
+  padding-block-end: 0.5rem; 
+  padding-inline-start: 1.25rem; 
+  padding-inline-end: 1.25rem; 
+  font-size: 1.5rem;
+  background: hsl(357, 100%, 72%);
+}
+</style>
+
+
+
+
+
+<script> 
+function forclear() {
+ document.getElementById("output").innerHTML = "0";
+}
+function removeZero() {
+ var value = document.getElementById("output").innerHTML;
+ if (value == "0") {
+ value = " "
+ document.getElementById("output").innerHTML = value;
+ }
+}
+function perc() {
+ var value = document.getElementById("output").innerHTML;
+ value = value / 100;
+ document.getElementById("output").innerHTML = value;
+}
+function fordisplay(value) {
+ removeZero()
+ document.getElementById("output").innerHTML += value;
+}
+function solve() {
+ removeZero()
+ var equation = document.getElementById("output").innerHTML;
+ var solved = eval(equation);
+ document.getElementById('output').innerHTML = solved;
+}
+</script>
+</html>
